@@ -1,0 +1,50 @@
+<div class="container-fluid teamsTable" ng-controller='TeamDetails as tl'>
+    <div class="bg-dark" ng-repeat="team in tl.constructorsList">
+        <div ng-if="team.Constructor.constructorId === tl.constructorId">
+            <table class="table table-bordered text-white">
+                <tr>
+                    <td rowspan="4" style="text-align: center; vertical-align: middle"><img ng-src="./images/constructors/{{team.Constructor.constructorId}}.png"></td>
+                    <td rowspan="2" style="text-align: center; vertical-align: middle"><img ng-src="./images/{{team.Constructor.nationality}}.png" width="50px"></td>
+                    <td>Nationality:</td>
+                    <td>{{team.Constructor.nationality}}</td>
+                </tr>
+                <tr>
+                    <td>Position:</td>
+                    <td>{{team.position}}</td>
+                </tr>
+                <tr>
+                    <td rowspan="2" style="text-align: center; vertical-align: middle">{{team.Constructor.name}}</td>
+                    <td>Points:</td>
+                    <td>{{tl.constructorsList[0].points}}</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">History:</td>
+                    <td><a href="{{team.Constructor.url}}" target="_blank"> <i class="fas fa-external-link-alt"></i></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="container-fluid table-responsive">
+        <table class="table table-bordered table-hover table-dark">
+            <thead class="table-secondary text-center bg-warning">
+                <th colspan="5">{{tl.title}}</th>
+            </thead>
+            <tbody>
+                <tr class="table bg-warning text-white">
+                    <th>Round</th>
+                    <th>Grand Prix</th>
+                    <th>{{tl.constructorDetails[0].Results[0].Driver.familyName}}</th>
+                    <th>{{tl.constructorDetails[1].Results[0].Driver.familyName}}</th>
+                    <th>Points</th>
+                </tr>
+                <tr ng-repeat='team in tl.constructorDetails'>
+                    <td>{{team.round}}</td>
+                    <td><img ng-src='./images/teams/{{team.Circuit.Location.country}}.png'> {{team.raceName}}</td>
+                    <td class='{{team.Results[0].position}}'>{{team.Results[0].position}}</td>
+                    <td class='{{team.Results[1].position}}'>{{team.Results[1].position}}</td>
+                    <td>{{team.Results[0].points -- team.Results[1].points}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

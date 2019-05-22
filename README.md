@@ -1,2 +1,0 @@
-# formulaApp
-Anguarjs formula

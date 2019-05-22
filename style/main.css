@@ -1,0 +1,55 @@
+body {
+    background-image: url(../images/formula_one_car-wallpaper-1600x900.jpg);
+}
+
+.teamsTable  {
+    margin-top: 80px;
+}
+
+[class='1'] {
+    background-color: rgb(253, 253, 123);
+}
+
+[class='2'] {
+    background-color: gray;
+}
+
+[class='3'] {
+    background-color: rgb(243, 201, 123);
+}
+
+[class='4'] {
+    background-color: lightgreen;
+}
+
+[class='5'] {
+    background-color: lightblue;
+}
+
+[class='6'] {
+    background-color: rgb(243, 174, 243);
+}
+
+[class='7'] {
+    background-color: rgb(196, 134, 134);
+}
+
+[class='8'] {
+    background-color: rgb(233, 87, 179);
+}
+
+[class='9'] {
+    background-color: mintcream;
+}
+
+[class='10'] {
+    background-color: rgb(240, 185, 131);
+}
+
+[class='11'], [class='12'], [class='13'], [class='14'], [class='15'], [class='16'], [class='17'], [class='18'], [class='19'], [class='20'], [class='21'], [class='22'], [class='23'], [class='24'], [class='25'] {
+    background-color: rgb(201, 188, 176);
+} 
+
+table th, table tr th, .table-secondary>th {
+    background-color: #990000;!important
+}

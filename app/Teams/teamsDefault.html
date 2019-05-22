@@ -1,0 +1,43 @@
+<div class="container-fluid table-responsive teamsTable" ng-controller='TeamList as tl'>
+    <form>
+        <div class="row">
+            <div class="col">
+                <select class="custom-select mb-4" ng-model="year" ng-init="year= '2013'" ng-change="tl.reload(year)">
+                    <option year="2018">2018</option>
+                    <option year="2017">2017</option>
+                    <option year="2016">2016</option>
+                    <option year="2015">2015</option>
+                    <option year="2014">2014</option>
+                    <option year="2013">2013</option>
+                    <option year="2012">2012</option>
+                    <option year="2011">2011</option>
+                    <option year="2010">2010</option>
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Search..." ng-model="teamFilter">
+            </div>
+        </div>
+    </form>
+    <table class="table table-bordered table-hover table-dark">
+        <thead class="text-center bg-warning">
+            <th colspan="4">{{tl.title}}</th>
+        </thead>
+        <tbody>
+            <tr class="table bg-warning text-white">
+                <th>Position</th>
+                <th>Name</th>
+                <th>Details</th>
+                <th>Points</th>
+            </tr>
+            <tr ng-repeat='team in tl.constructorsList | filter: teamFilter'>
+                <td>{{team.position}}</td>
+                <td><img ng-src='./images/{{team.Constructor.nationality}}.png'> <a
+                        href='#!teams/{{team.Constructor.constructorId}}'>{{team.Constructor.name}}</a></td>
+                <td><a href='{{team.Constructor.url}}' target='_blank'><i
+                            class="fas fa-external-link-alt"></i>Details</a></td>
+                <td>{{team.points}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

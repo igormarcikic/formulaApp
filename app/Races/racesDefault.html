@@ -1,0 +1,47 @@
+<div class="container-fluid table-responsive teamsTable" ng-controller='RaceList as rl'>
+    <form>
+        <div class="row">
+            <div class="col">
+                <select class="custom-select mb-4" ng-model="year" ng-init="year= '2013'" ng-change="rl.reload(year)">
+                    <option year="2018">2018</option>
+                    <option year="2017">2017</option>
+                    <option year="2016">2016</option>
+                    <option year="2015">2015</option>
+                    <option year="2014">2014</option>
+                    <option year="2013">2013</option>
+                    <option year="2012">2012</option>
+                    <option year="2011">2011</option>
+                    <option year="2010">2010</option>
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Search..." ng-model="teamFilter">
+            </div>
+        </div>
+    </form>
+    <table class="table table-dark table-bordered table-hover">
+        <thead>
+            <tr>
+                <th colspan="5" class="text-center">Race Calendar - {{rl.grandPrix[0].season}}</th>
+            </tr>
+            <tr>
+                <th>Round</th>
+                <th>Grand Prix</th>
+                <th>Circuit</th>
+                <th>Date</th>
+                <th>Winner</th>
+            </tr>
+        </thead>
+        <tbody class="bg-dark">
+            <tr ng-repeat='races in rl.grandPrix | filter: teamFilter'>
+                <td>{{races.round}}</td>
+                <td><a href='#!races/{{races.round}}'> <img
+                            ng-src="./images/teams/{{races.Circuit.Location.country}}.png"> {{races.raceName}}</a></td>
+                <td>{{races.Circuit.circuitName}}</td>
+                <td>{{races.date}}</td>
+                <td><img ng-src='./images/{{races.Results[0].Driver.nationality}}.png'>
+                    {{races.Results[0].Driver.familyName}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

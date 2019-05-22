@@ -1,0 +1,48 @@
+<div class="container-fluid teamsTable">
+    <div class="bg-dark" ng-controller='DriversDetails as dd'>
+        <table class="table table-bordered table-hover text-white" ng-repeat='details in dd.driversDetails'>
+            <tr>
+                <td rowspan="4" style="text-align: center; vertical-align: middle"><img ng-src=./images/drivers/{{details.Driver.familyName}}.png width="100px"> </td> 
+                <td rowspan="2" style="text-align: center; vertical-align: middle"><img ng-src=./images/{{details.Driver.nationality}}.png width="50px"> </td> <td>Country</td>
+                <td>{{details.Driver.nationality}}</td>
+            </tr>
+            <tr>
+                <td>Team</td>
+                <td>{{details.Constructors[0].name}}</td>
+            </tr>
+            <tr>
+                <td rowspan="2" style="text-align: center; vertical-align: middle">{{details.Driver.givenName+ " "}}{{details.Driver.familyName}}</td>
+                <td>Birth</td>
+                <td>{{details.Driver.dateOfBirth | date}}</td>
+            </tr>
+            <tr>
+                <td>Biography</td>
+                <td><a href='{{details.Driver.url}}' target='_blank'><i class="fas fa-external-link-alt"></i></td>
+            </tr>
+        </table>
+    </div>
+    <div class="container-fluid table-responsive" ng-controller='DriversRaces as dr'>
+        <table class="table table-bordered table-hover table-dark">
+            <thead class="table-secondary text-center">
+                <th colspan="5">{{dr.title}}</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Round</th>
+                    <th>Grand Prix</th>
+                    <th>Team</th>
+                    <th>Grid</th>
+                    <th>Race</th>
+                </tr>
+                <tr ng-repeat='races in dr.driversRaces'>
+                    <td>{{races.round}}</td>
+                    <td><img ng-src='./images/teams/{{races.Circuit.Location.country}}.png'> {{races.raceName}}</td>
+                    <td>{{races.Results[0].Constructor.name}}</td>
+                    <td>{{races.Results[0].grid}}</td>
+                    <td class="{{races.Results[0].position}}">{{races.Results[0].position}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,8 @@
+{
+	"compilerOptions": {
+		"target": "ES5",
+		"lib": ["dom", "es5"],
+		"outDir": "./prod",
+		"rootDir": "./app"
+	}
+}

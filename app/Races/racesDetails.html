@@ -1,0 +1,81 @@
+<div class="teamsTable" ng-controller="RaceDetails as rd">
+
+    <div class="bg-dark">
+        <table class="table table-bordered table-hover text-white">
+            <tr>
+                <td rowspan="4" style="text-align: center; vertical-align: middle"><img
+                        ng-src="./images/races/{{rd.allRaces.Circuit.Location.country}}.png"></td>
+                <td rowspan="2" style="text-align: center; vertical-align: middle"><img
+                        ng-src="./images/teams/{{rd.allRaces.Circuit.Location.country}}.png" width="50px"></td>
+                <td>Country:</td>
+                <td>{{rd.allRaces.Circuit.Location.country}}</td>
+            </tr>
+            <tr>
+                <td>Location:</td>
+                <td>{{rd.allRaces.Circuit.Location.locality}}</td>
+            </tr>
+            <tr>
+                <td rowspan="2" style="text-align: center; vertical-align: middle">{{rd.allRaces.raceName}}</td>
+                <td>Date:</td>
+                <td>{{rd.allRaces.date}}</td>
+            </tr>
+            <tr>
+                <td rowspan="2">History:</td>
+                <td><a href="{{rd.allRaces.url}}" target="_blank"> <i class="fas fa-external-link-alt"></i></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="row">
+
+        <div class="container-fluid col-md-6" style="padding:0">
+            <div class="container table-responsive">
+                <table class="table table-bordered table-hover table-dark">
+                    <thead class="table-secondary text-center">
+                        <th colspan="4">Qualifying Results</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Driver</th>
+                            <th>Team</th>
+                            <th>Best Time</th>
+                        </tr>
+                        <tr ng-repeat='qResults in rd.allQ.QualifyingResults'>
+                            <td>{{qResults.position}}</td>
+                            <td><img ng-src="./images/{{qResults.Driver.nationality}}.png"> {{qResults.Driver.familyName}}</td>
+                            <td>{{qResults.Constructor.name}}</td>
+                            <td>{{qResults.Q3}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="container table-responsive col-md-6"  style="padding:0">
+            <table class="table table-bordered table-dark table-hover">
+                <thead class="table-secondary text-center">
+                    <th colspan="5">Race Results</th>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Driver</th>
+                        <th>Team</th>
+                        <th>Results</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat='results in rd.allRaces.Results'>
+                        <td>{{results.position}}</td>
+                        <td><img ng-src="./images/{{results.Driver.nationality}}.png"> {{results.Driver.familyName}}</td>
+                        <td>{{results.Constructor.name}}</td>
+                        <td>{{results.Time.time}}</td>
+                        <td class='{{results.points}}'>{{results.points}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

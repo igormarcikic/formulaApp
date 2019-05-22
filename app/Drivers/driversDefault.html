@@ -1,0 +1,43 @@
+<div class="container-fluid teamsTable" ng-controller='DriversList as dl'>
+    <form>
+        <div class="row">
+            <div class="col">
+                <select class="custom-select mb-4" ng-model="year" ng-init="year= '2013'" ng-change="dl.reload(year)">
+                    <option year="2018">2018</option>
+                    <option year="2017">2017</option>
+                    <option year="2016">2016</option>
+                    <option year="2015">2015</option>
+                    <option year="2014">2014</option>
+                    <option year="2013">2013</option>
+                    <option year="2012">2012</option>
+                    <option year="2011">2011</option>
+                    <option year="2010">2010</option>
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Search..." ng-model="teamFilter">
+            </div>
+        </div>
+    </form>
+    <table class="table table-bordered table-hover table-dark">
+        <thead class="table-secondary text-center bg-warning">
+            <th colspan="4">{{dl.title}}</th>
+            <tr>
+                <th>Position</th>
+                <th>Name</th>
+                <th>Team</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat='drivers in dl.driversList | filter: teamFilter'>
+                <td>{{drivers.position}}</td>
+                <td><img ng-src=./images/{{drivers.Driver.nationality}}.png> <a
+                        href="#!drivers/{{drivers.Driver.driverId}}">
+                    {{drivers.Driver.givenName+ " "}}{{drivers.Driver.familyName}}</a></td>
+                <td>{{drivers.Constructors[0].name}}</td>
+                <td>{{drivers.points}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
